@@ -141,6 +141,13 @@ export default function InputNameScreen() {
         options={['사진 촬영하여 선택', '앨범에서 선택', '취소']}
         cancelButtonIndex={2}
         onPress={async index => {
+          if (index === 0) {
+            navigation.push('TakePhoto', {
+              onTakePhoto: uri => {
+                setSelectedPhoto({uri: uri});
+              },
+            });
+          }
           if (index === 1) {
             await handlePressProfileImageUsingAlbum();
           }
