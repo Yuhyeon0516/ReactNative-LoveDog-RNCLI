@@ -16,6 +16,7 @@ export type TypeSignupNavigation = {
       profileImage: string;
     };
   };
+
   InputName: {
     uid: string;
     preInput: {
