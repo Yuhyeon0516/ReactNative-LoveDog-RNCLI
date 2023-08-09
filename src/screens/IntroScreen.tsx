@@ -54,26 +54,6 @@ export default function IntroScreen() {
           paddingBottom: 32 + safeAreaInset.bottom,
         }}>
         <GoogleSigninButton onPress={onPressGoogleSignin} />
-        {/* <CustomButton
-          onPress={() =>
-            navigation.push('Signup', {
-              screen: 'InputEmail',
-              params: {
-                uid: '',
-                preInput: {
-                  email: 'test@test.com',
-                  name: 'test',
-                  profileImage: '',
-                },
-              },
-            })
-          }>
-          <Typography fontSize={16}>회원가입</Typography>
-        </CustomButton>
-
-        <CustomButton onPress={() => navigation.replace('MainTab')}>
-          <Typography fontSize={16}>메인</Typography>
-        </CustomButton> */}
       </View>
     </View>
   );
