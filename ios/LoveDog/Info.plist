@@ -70,5 +70,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>프로필 사진 설정하기 위해 갤러리 이미지가 필요합니다.</string>
+  <key>NSCameraUsageDescription</key>
+  <string>프로필 사진 설정하기 위해 카메라 촬영 기능이 필요합니다.</string>
 </dict>
 </plist>
