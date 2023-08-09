@@ -13,12 +13,14 @@ import {
   useNavigation,
   useRoute,
 } from '@react-navigation/native';
+import TakePhotoScreen from '../screens/TakePhotoScreen';
 
 export type TypeRootNavigation = {
   Intro: undefined;
   Signup: NavigatorScreenParams<TypeSignupNavigation>;
   MainTab: undefined;
   History: undefined;
+  TakePhoto: {onTakePhoto: (uri: string) => void};
 };
 
 const Stack = createNativeStackNavigator();
@@ -30,6 +32,7 @@ export default function RootNavigation() {
       <Stack.Screen name="Signup" component={SignupNavigation} />
       <Stack.Screen name="MainTab" component={TabNavigation} />
       <Stack.Screen name="History" component={HistoryScreen} />
+      <Stack.Screen name="TakePhoto" component={TakePhotoScreen} />
     </Stack.Navigator>
   );
 }
