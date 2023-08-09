@@ -17,7 +17,7 @@ import {
 export type TypeRootNavigation = {
   Intro: undefined;
   Signup: NavigatorScreenParams<TypeSignupNavigation>;
-  Main: undefined;
+  MainTab: undefined;
   History: undefined;
 };
 
@@ -28,7 +28,7 @@ export default function RootNavigation() {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Intro" component={IntroScreen} />
       <Stack.Screen name="Signup" component={SignupNavigation} />
-      <Stack.Screen name="Main" component={TabNavigation} />
+      <Stack.Screen name="MainTab" component={TabNavigation} />
       <Stack.Screen name="History" component={HistoryScreen} />
     </Stack.Navigator>
   );
