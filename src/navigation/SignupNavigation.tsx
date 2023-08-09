@@ -1,9 +1,33 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {
+  NativeStackNavigationProp,
+  createNativeStackNavigator,
+} from '@react-navigation/native-stack';
 import React from 'react';
 import InputEmailScreen from '../screens/InputEmailScreen';
 import InputNameScreen from '../screens/InputNameScreen';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 
-const Stack = createNativeStackNavigator();
+export type TypeSignupNavigation = {
+  InputEmail: {
+    uid: string;
+    preInput: {
+      email: string;
+      name: string;
+      profileImage: string;
+    };
+  };
+  InputName: {
+    uid: string;
+    preInput: {
+      email: string;
+      name: string;
+      profileImage: string;
+    };
+    inputEmail: string;
+  };
+};
+
+const Stack = createNativeStackNavigator<TypeSignupNavigation>();
 
 export default function SignupNavigation() {
   return (
@@ -13,3 +37,12 @@ export default function SignupNavigation() {
     </Stack.Navigator>
   );
 }
+
+export const useSignupNavigation = <
+  RouteName extends keyof TypeSignupNavigation,
+>() =>
+  useNavigation<NativeStackNavigationProp<TypeSignupNavigation, RouteName>>();
+
+export const useSignupRoute = <
+  RouteName extends keyof TypeSignupNavigation,
+>() => useRoute<RouteProp<TypeSignupNavigation, RouteName>>();
