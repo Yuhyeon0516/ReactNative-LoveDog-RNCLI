@@ -13,6 +13,7 @@ import {Spacer} from '../components/Spacer';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {RemoteImage} from '../components/RemoteImage';
 import {Icon} from '../components/Icons';
+import ImagePicker from 'react-native-image-crop-picker';
 
 export default function InputNameScreen() {
   const safeAreaInset = useSafeAreaInsets();
@@ -21,6 +22,9 @@ export default function InputNameScreen() {
   const route = useSignupRoute<'InputName'>();
   const [inputName, setInputName] = useState<string>(
     route.params.preInput.name,
+  );
+  const [selectedPhoto, setSelectedPhoto] = useState<{uri: string} | null>(
+    null,
   );
   const [profileImage, setProfileImage] = useState<string>(
     route.params.preInput.profileImage,
@@ -36,7 +40,15 @@ export default function InputNameScreen() {
 
   const onPressSubmit = useCallback(handleNameSubmit, [navigation]);
 
-  function handlePressProfileImage() {}
+  async function handlePressProfileImage() {
+    const photoResult = await ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    });
+
+    setSelectedPhoto({uri: photoResult.path});
+  }
 
   const onPressProfileImage = useCallback(handlePressProfileImage, []);
 
@@ -66,7 +78,7 @@ export default function InputNameScreen() {
                 <RemoteImage
                   width={100}
                   height={100}
-                  url={profileImage}
+                  url={selectedPhoto?.uri || profileImage}
                   style={{borderRadius: 50}}
                 />
                 <View style={{position: 'absolute', right: 0, bottom: 0}}>
