@@ -34,10 +34,10 @@ export default function RootNavigation() {
   );
 }
 
-export const useSignupNavigation = <
+export const useRootNavigation = <
   RouteName extends keyof TypeRootNavigation,
 >() =>
   useNavigation<NativeStackNavigationProp<TypeRootNavigation, RouteName>>();
 
-export const useSignupRoute = <RouteName extends keyof TypeRootNavigation>() =>
+export const useRootRoute = <RouteName extends keyof TypeRootNavigation>() =>
   useRoute<RouteProp<TypeRootNavigation, RouteName>>();
