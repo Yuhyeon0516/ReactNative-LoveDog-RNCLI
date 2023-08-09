@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "611587210424",
+    "project_id": "lovedog-a02be",
+    "storage_bucket": "lovedog-a02be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611587210424:android:795b40a2e2f6f99b35c84d",
+        "android_client_info": {
+          "package_name": "com.lovedog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611587210424-4hn5fi2k4utg85veqia940tdfvkuatgo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lovedog",
+            "certificate_hash": "4ac8e9accc850c6044d550c0f45faad31d79068a"
+          }
+        },
+        {
+          "client_id": "611587210424-ap6v36pah4l0c8jhli0v34i9mg9vosg0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlanX6UXLltLDD4laJ6eS__T09iCTlsdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611587210424-ap6v36pah4l0c8jhli0v34i9mg9vosg0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "611587210424-unpsam8kaltouk69ni7dadsam55v935u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lovedog"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
