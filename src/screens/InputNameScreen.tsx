@@ -31,9 +31,7 @@ export default function InputNameScreen() {
     null,
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [profileImage, setProfileImage] = useState<string>(
-    route.params.preInput.profileImage,
-  );
+  const [profileImage] = useState<string>(route.params.preInput.profileImage);
 
   const isValid = useMemo(() => {
     return true;
