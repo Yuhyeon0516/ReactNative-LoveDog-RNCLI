@@ -4,7 +4,7 @@ import {Header} from '../components/Header/Header';
 import {useDispatch, useSelector} from 'react-redux';
 import {TypeRootReducer} from '../store/store';
 import {TypeDog} from '../types/TypeDog';
-import {TypeDogDispatch, getDog} from '../actions/dog';
+import {TypeDogDispatch, getDog, likeDog} from '../actions/dog';
 import {RemoteImage} from '../components/RemoteImage';
 import {Spacer} from '../components/Spacer';
 import {CustomButton} from '../components/CustomButton';
@@ -19,11 +19,18 @@ export default function MainScreen() {
 
   const dispatch = useDispatch<TypeDogDispatch>();
 
-  function handlePressLike() {}
-  const onPressLike = useCallback(handlePressLike, []);
+  function handlePressLike() {
+    if (!dog) {
+      return;
+    }
+    dispatch(likeDog(dog));
+  }
+  const onPressLike = useCallback(handlePressLike, [dispatch, dog]);
 
-  function handlePressNotLike() {}
-  const onPressNotLike = useCallback(handlePressNotLike, []);
+  function handlePressNotLike() {
+    dispatch(getDog());
+  }
+  const onPressNotLike = useCallback(handlePressNotLike, [dispatch]);
 
   useEffect(() => {
     dispatch(getDog());
