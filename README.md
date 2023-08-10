@@ -8,6 +8,8 @@ You can denote like or not like looking at dog picture using gesture or click bu
 On my screen, you can see your profile image, name and button to move to history screen.<br/>
 When move to history screen, you can see dog pictures you have liked.<br/>
 
+--- 
+
 # Result
 
-![Result]()
+![Result](https://github.com/Yuhyeon0516/ReactNative-LoveDog-RNCLI/assets/120432007/80157a9c-29db-4102-a4e2-489391d5a047)
