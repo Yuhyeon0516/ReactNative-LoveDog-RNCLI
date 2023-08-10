@@ -9,9 +9,12 @@ import {
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
+import {useDispatch} from 'react-redux';
+import {setUser} from '../actions/user';
 
 export default function IntroScreen() {
   const navigation = useRootNavigation<'Intro'>();
+  const dispatch = useDispatch();
   const safeAreaInset = useSafeAreaInsets();
   const [visibleGoogleSignInButton, setVisibleGoogleSignInButton] =
     useState<boolean>(true);
@@ -38,12 +41,23 @@ export default function IntroScreen() {
       lastLoginAt: now.toISOString(),
     });
 
+    const userInfo = await dbRef.once('value').then(snapshot => snapshot.val());
+    dispatch(
+      setUser({
+        uid: uid,
+        userEmail: userInfo.email,
+        userName: userInfo.name,
+        profileImage: userInfo.profile,
+      }),
+    );
+
     navigation.reset({
       routes: [{name: 'MainTab'}],
     });
   }
 
   const checkUserLoginOnce = useCallback(handleCheckUserLoginOnce, [
+    dispatch,
     navigation,
   ]);
 

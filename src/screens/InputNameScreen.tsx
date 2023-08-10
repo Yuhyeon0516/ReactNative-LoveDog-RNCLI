@@ -17,9 +17,12 @@ import ImagePicker from 'react-native-image-crop-picker';
 import ActionSheet from '@alessiocancian/react-native-actionsheet';
 import {uploadFile} from '../utils/FileUtil';
 import database from '@react-native-firebase/database';
+import {useDispatch} from 'react-redux';
+import {setUser} from '../actions/user';
 
 export default function InputNameScreen() {
   const safeAreaInset = useSafeAreaInsets();
+  const dispatch = useDispatch();
   const navigation = useRootNavigation<'Signup'>();
   const signupNavigation = useSignupNavigation<'InputName'>();
   const route = useSignupRoute<'InputName'>();
@@ -59,6 +62,17 @@ export default function InputNameScreen() {
       regeditAt: now.toISOString(),
       lastLoginAt: now.toISOString(),
     });
+
+    const userInfo = await dbRef.once('value').then(snapshot => snapshot.val());
+    dispatch(
+      setUser({
+        uid: route.params.uid,
+        userEmail: userInfo.email,
+        userName: userInfo.name,
+        profileImage: userInfo.profile,
+      }),
+    );
+
     setIsLoading(false);
     navigation.reset({
       routes: [{name: 'MainTab'}],
@@ -66,6 +80,7 @@ export default function InputNameScreen() {
   }
 
   const onPressSubmit = useCallback(handleNameSubmit, [
+    dispatch,
     inputName,
     navigation,
     profileImage,
