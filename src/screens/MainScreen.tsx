@@ -24,6 +24,7 @@ export default function MainScreen() {
       return;
     }
     dispatch(likeDog(dog));
+    dispatch(getDog());
   }
   const onPressLike = useCallback(handlePressLike, [dispatch, dog]);
 
