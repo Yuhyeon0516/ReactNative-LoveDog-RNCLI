@@ -9,6 +9,7 @@ import {LogBox} from 'react-native';
 import {Provider} from 'react-redux';
 import store from './src/store/store';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {withIAPContext} from 'react-native-iap';
 
 GoogleSignin.configure({
   webClientId:
@@ -48,4 +49,4 @@ function App(): JSX.Element {
   );
 }
 
-export default App;
+export default withIAPContext(App);
