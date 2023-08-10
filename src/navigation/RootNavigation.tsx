@@ -14,6 +14,8 @@ import {
   useRoute,
 } from '@react-navigation/native';
 import TakePhotoScreen from '../screens/TakePhotoScreen';
+import {useSelector} from 'react-redux';
+import {TypeRootReducer} from '../store/store';
 
 export type TypeRootNavigation = {
   Intro: undefined;
@@ -26,12 +28,20 @@ export type TypeRootNavigation = {
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigation() {
+  const isSignIn = useSelector<TypeRootReducer, boolean>(
+    state => state.user.user !== null,
+  );
+
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Intro" component={IntroScreen} />
-      <Stack.Screen name="Signup" component={SignupNavigation} />
-      <Stack.Screen name="MainTab" component={TabNavigation} />
-      <Stack.Screen name="History" component={HistoryScreen} />
+      {!isSignIn && <Stack.Screen name="Signup" component={SignupNavigation} />}
+      {isSignIn && (
+        <>
+          <Stack.Screen name="MainTab" component={TabNavigation} />
+          <Stack.Screen name="History" component={HistoryScreen} />
+        </>
+      )}
       <Stack.Screen name="TakePhoto" component={TakePhotoScreen} />
     </Stack.Navigator>
   );
