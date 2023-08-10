@@ -1,7 +1,9 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import RootNavigation from './src/navigation/RootNavigation';
+import RootNavigation, {
+  TypeRootNavigation,
+} from './src/navigation/RootNavigation';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {LogBox} from 'react-native';
 import {Provider} from 'react-redux';
@@ -22,7 +24,22 @@ function App(): JSX.Element {
     <SafeAreaProvider>
       <Provider store={store}>
         <GestureHandlerRootView style={{flex: 1}}>
-          <NavigationContainer>
+          <NavigationContainer<TypeRootNavigation>
+            linking={{
+              prefixes: ['mydog://'],
+              config: {
+                screens: {
+                  History: '/history',
+                  MainTab: {
+                    path: '/',
+                    screens: {
+                      Main: '/main',
+                      My: '/my',
+                    },
+                  },
+                },
+              },
+            }}>
             <RootNavigation />
           </NavigationContainer>
         </GestureHandlerRootView>
