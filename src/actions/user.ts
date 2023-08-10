@@ -1,6 +1,6 @@
 import {TypeUser} from '../types/TypeUser';
 
-export const SET_USER_INFO = 'SET_USER_INFO';
+export const SET_USER_INFO = 'SET_USER_INFO' as const;
 
 export function setUser(user: TypeUser) {
   return {
