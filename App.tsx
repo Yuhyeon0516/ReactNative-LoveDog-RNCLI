@@ -6,6 +6,7 @@ import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {LogBox} from 'react-native';
 import {Provider} from 'react-redux';
 import store from './src/store/store';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 GoogleSignin.configure({
   webClientId:
@@ -20,9 +21,11 @@ function App(): JSX.Element {
   return (
     <SafeAreaProvider>
       <Provider store={store}>
-        <NavigationContainer>
-          <RootNavigation />
-        </NavigationContainer>
+        <GestureHandlerRootView style={{flex: 1}}>
+          <NavigationContainer>
+            <RootNavigation />
+          </NavigationContainer>
+        </GestureHandlerRootView>
       </Provider>
     </SafeAreaProvider>
   );
