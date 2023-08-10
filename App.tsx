@@ -4,6 +4,8 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import RootNavigation from './src/navigation/RootNavigation';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {LogBox} from 'react-native';
+import {Provider} from 'react-redux';
+import store from './src/store/store';
 
 GoogleSignin.configure({
   webClientId:
@@ -17,9 +19,11 @@ LogBox.ignoreLogs([
 function App(): JSX.Element {
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-        <RootNavigation />
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <RootNavigation />
+        </NavigationContainer>
+      </Provider>
     </SafeAreaProvider>
   );
 }
