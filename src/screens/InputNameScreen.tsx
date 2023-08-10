@@ -15,6 +15,8 @@ import {RemoteImage} from '../components/RemoteImage';
 import {Icon} from '../components/Icons';
 import ImagePicker from 'react-native-image-crop-picker';
 import ActionSheet from '@alessiocancian/react-native-actionsheet';
+import {uploadFile} from '../utils/FileUtil';
+import database from '@react-native-firebase/database';
 
 export default function InputNameScreen() {
   const safeAreaInset = useSafeAreaInsets();
@@ -36,11 +38,38 @@ export default function InputNameScreen() {
     return true;
   }, []);
 
-  function handleNameSubmit() {
+  async function handleNameSubmit() {
+    async function getPhotoUrl() {
+      if (selectedPhoto) {
+        return await uploadFile(selectedPhoto.uri);
+      }
+
+      return profileImage;
+    }
+
+    const photoUrl = await getPhotoUrl();
+
+    const now = new Date();
+    const dbRef = database().ref(`member/${route.params.uid}`);
+
+    await dbRef.set({
+      name: inputName,
+      email: route.params.inputEmail,
+      profile: photoUrl,
+      regeditAt: now.toISOString(),
+      lastLoginAt: now.toISOString(),
+    });
     navigation.replace('MainTab');
   }
 
-  const onPressSubmit = useCallback(handleNameSubmit, [navigation]);
+  const onPressSubmit = useCallback(handleNameSubmit, [
+    inputName,
+    navigation,
+    profileImage,
+    route.params.inputEmail,
+    route.params.uid,
+    selectedPhoto,
+  ]);
 
   async function handlePressProfileImageUsingAlbum() {
     const photoResult = await ImagePicker.openPicker({
