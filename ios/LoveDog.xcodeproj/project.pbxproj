@@ -14,6 +14,7 @@
 		455EBB34290CD15CEAD94034 /* Pods_LoveDog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFBBC381A92E71D1B524983A /* Pods_LoveDog.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B8E56F5F5E544DB005B05BB4 /* Pods_LoveDog_LoveDogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 933637DD6CF9537DF26E797F /* Pods_LoveDog_LoveDogTests.framework */; };
+		ED6B36082A851CF5002D1C3E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED6B36072A851CF5002D1C3E /* StoreKit.framework */; };
 		EDFA1C262A838B5000F36404 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDFA1C252A838B5000F36404 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		933637DD6CF9537DF26E797F /* Pods_LoveDog_LoveDogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveDog_LoveDogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4835FAA160DE7CC9B219925 /* Pods-LoveDog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveDog.release.xcconfig"; path = "Target Support Files/Pods-LoveDog/Pods-LoveDog.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		ED6B36072A851CF5002D1C3E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		EDFA1BFF2A8375D800F36404 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		EDFA1C002A8375D800F36404 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		EDFA1C012A8375D800F36404 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				455EBB34290CD15CEAD94034 /* Pods_LoveDog.framework in Frameworks */,
+				ED6B36082A851CF5002D1C3E /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +125,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED6B36072A851CF5002D1C3E /* StoreKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				EFBBC381A92E71D1B524983A /* Pods_LoveDog.framework */,
 				933637DD6CF9537DF26E797F /* Pods_LoveDog_LoveDogTests.framework */,
