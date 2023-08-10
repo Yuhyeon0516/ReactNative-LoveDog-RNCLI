@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {ActivityIndicator, View} from 'react-native';
 import React, {useCallback, useMemo, useRef, useState} from 'react';
 import {Header} from '../components/Header/Header';
 import {CustomButton} from '../components/CustomButton';
@@ -30,6 +30,7 @@ export default function InputNameScreen() {
   const [selectedPhoto, setSelectedPhoto] = useState<{uri: string} | null>(
     null,
   );
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [profileImage, setProfileImage] = useState<string>(
     route.params.preInput.profileImage,
   );
@@ -39,6 +40,7 @@ export default function InputNameScreen() {
   }, []);
 
   async function handleNameSubmit() {
+    setIsLoading(true);
     async function getPhotoUrl() {
       if (selectedPhoto) {
         return await uploadFile(selectedPhoto.uri);
@@ -59,7 +61,10 @@ export default function InputNameScreen() {
       regeditAt: now.toISOString(),
       lastLoginAt: now.toISOString(),
     });
-    navigation.replace('MainTab');
+    setIsLoading(false);
+    navigation.reset({
+      routes: [{name: 'MainTab'}],
+    });
   }
 
   const onPressSubmit = useCallback(handleNameSubmit, [
@@ -157,9 +162,13 @@ export default function InputNameScreen() {
         <View style={{backgroundColor: isValid ? 'black' : 'lightgray'}}>
           <Spacer space={16} />
           <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Typography fontSize={20} color="white">
-              회원가입
-            </Typography>
+            {isLoading ? (
+              <ActivityIndicator size={20} color={'white'} />
+            ) : (
+              <Typography fontSize={20} color="white">
+                회원가입
+              </Typography>
+            )}
           </View>
           <Spacer space={safeAreaInset.bottom} />
         </View>
